@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  margin: auto;
+  padding: auto;
+}
+body {
+  margin-top: 40px;
+  font-family: "Poppins", sans-serif;
+  height: auto;
+  background-color: #1a1b26;
+  display: grid;
+  place-content: center;
+  color: white;
+}
+.header {
+  width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: white;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+input {
+  font-size: 22px;
+  width: 550px;
+  height: 47px;
+}
+
+/* ===================================================== */
+/* a LINK BUTTON CSS */
+.button {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 25px;
+  margin: 10px;
+  border: 3px solid hsl(0, 74%, 40%);
+  border-radius: 10px;
+}
+
+.button:hover {
+  animation: pulsate 1s ease-in-out;
+}
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 25px #5ddcff, 0 0 50px hsl(0, 74%, 40%);
+  }
+}
+/* ===================================================== */
+/* POST IDEA CSS */
+.post_button {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 3px;
+  border-radius: 6px;
+  position: absolute;
+  overflow: hidden;
+  margin-left: 15px;
+}
+
+.post_button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    #4fcf70,
+    #fad648,
+    #a767e5,
+    #12bcfe,
+    #44ce7b
+  );
+  background-size: 50% 100%;
+  border-radius: inherit;
+}
+
+.post_button:hover::before {
+  animation: animate_border 0.75s linear infinite;
+}
+
+.post_button span {
+  display: block;
+  background-color: #000;
+  padding: 13px 20px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes animate_border {
+  to {
+    transform: translateX(-50%);
+  }
+}

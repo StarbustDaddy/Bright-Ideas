@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  margin-top: 40px;
+  font-family: "Poppins", sans-serif;
+  height: auto;
+  background-color: #1a1b26;
+  display: grid;
+  place-content: center;
+  color: white;
+}
+
+.header {
+  width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+.chosen_user_says {
+  display: flex;
+}
+p {
+  font-size: 22px;
+  margin-right: 5px;
+}
+a {
+  color: white;
+  font-size: 22px;
+}
+/* ===================================================== */
+/* TITLE CLASS INFO */
+.title {
+  color: #fff;
+  /* line-height: 0px; */
+  font-weight: 300;
+  margin: 5px;
+  border: solid white;
+  padding: 15px;
+  font-size: 20px;
+  border-width: auto;
+}
+
+.title-content {
+  display: block;
+  opacity: 0;
+  animation: revealText 0.5s forwards;
+  width: 500px;
+  height: auto;
+}
+@keyframes revealText {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ===================================================== */
+/* PEOPLE LIKED SECTION */
+
+h2 {
+  color: hsl(0, 74%, 40%);
+  font-size: 30px;
+}
+
+.people_liked {
+  margin-left: 0px;
+}
+
+table {
+  width: 800px;
+  height: auto;
+  padding: 10px;
+}
+.name_of_people_liked {
+  font-size: 17px;
+}
+td {
+  border: solid white;
+  padding: 15px;
+  /* text-align: center; */
+  font-size: 17px;
+  width: 200px;
+}
+th {
+  border: solid hsl(0, 74%, 40%);
+  font-size: 20px;
+  text-align: left;
+  padding: 15px;
+}
+/* ===================================================== */
+/* a LINK BUTTON CSS */
+.button {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 25px;
+  margin: 10px;
+  border: 3px solid #3c67e3;
+  border-radius: 10px;
+}
+
+.button:hover {
+  animation: pulsate 1s ease-in-out;
+}
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 25px #5ddcff, 0 0 50px #4e00c2;
+  }
+}
+
+.logout-button {
+  border: 3px solid hsl(0, 74%, 40%);
+}

@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="profile.css" />
     <title>Bright Ideas - User Profile</title>
-</head>
-<body>
-    <div>
-        <a href="/dashboard">My Dashboard</a>  <a href="/logout">Logout</a>
+  </head>
+  <body>
+    <div class="header">
+      <h2>{{USER NAME}}</h2>
+      <div>
+        <a href="/dashboard" class="button">My Dashboard</a>
+        <a href="/logout" class="button logout-button">Logout</a>
+      </div>
     </div>
-    <ul>
-        <li>Name: </li>
-        <li>Alias: </li>
-        <li>Email: </li>
-    </ul>
-    <hr>
-    <ul>
-        <li>Total number of posts: {{Number of ideas}}</li>
-        <li>Total number of Likes: {{Number of likes}}</li>
-    </ul>
-</body>
+    <div class="title">
+      <span class="title-content">{{NAME}}</span>
+      <span class="title-content title-second"> Alias: {{ALIAS NAME}}</span>
+      <span class="title-content title-third"> Email: {{Email Info}}</span>
+      <hr />
+      <span class="title-content title-fourth"
+        >Total number of posts: {{Number of ideas}}</span
+      >
+      <span class="title-content title-fifth"
+        >Total number of Likes: {{Number of likes}}</span
+      >
+    </div>
+  </body>
 </html>

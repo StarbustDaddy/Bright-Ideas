@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="user_main.css" />
     <title>Bright Ideas - Dashboard</title>
-</head>
-<body>
-    <h2>Welcome {{}}!</h2>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Welcome {{USERNAME}}!</h2>
+      <a href="/logout" class="button">Logout</a>
+    </div>
     <div class="container">
-        <form action="" method="POST">
-            <input type="textarea" name="idea_name" placeholder="Post something witty here." id="idea_name">
-            <button>Idea!</button>
-        </form>
+      <form action="" method="POST">
+        <input
+          type="textarea"
+          name="idea_name"
+          placeholder="Post something witty here."
+          id="idea_name"
+        />
+        <a href="/post" class="post_button"><span>Post idea!</span></a>
+      </form>
     </div>
     <div>
-        {% for  %}
-        <div class="idea_box">
-            <a href="">{{Alias}}</a> says: <p>Test text messaging to see if this works.</p>
-            <div>
-                <a href="/">Like</a><a href="/">{{Number of people who liked}}</a>
-            </div>
+      {% for %}
+      <div class="idea_box">
+        <a href="">{{Alias}}</a> says:
+        <p>Test text messaging to see if this works.</p>
+        <div>
+          <a href="/">Like</a><a href="/">{{Number of people who liked}}</a>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
     </div>
-    <a href="/logout">Logout</a>
-</body>
+  </body>
 </html>

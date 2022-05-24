@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="idea_list.css" />
     <title>Bright Ideas - Idea Forum</title>
-</head>
-<body>
-    <div>
-        <a href="/dashboard">My Dashboard</a>  <a href="/logout">Logout</a>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/dashboard" class="button">My Dashboard</a>
+      <a href="/logout" class="button logout-button">Logout</a>
     </div>
-    <div>
-        <a href="">{{}}</a> says: <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe iure perferendis vero eveniet eaque itaque totam consectetur animi neque, unde tempore. Quia in illo odio dolorem porro eius error asperiores!</p>
+
+    
+      <div class="chosen_user_says">
+        <p><a href="">{{CHOSEN USER}}</a> says:</p>
+        <div class="title">
+          <span class="title-content">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe iure
+            perferendis vero eveniet eaque itaque totam consectetur animi neque,
+            unde tempore. Quia in illo odio dolorem porro eius error asperiores!
+          </span>
+        </div>
+      </div>
     </div>
-    <div>
-        <h5>People who liked this post.</h5>
+      <div class="people_liked">
+        <h2>People who liked this post.</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>Alias</th>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for %}
-                <tr>
-                    <td><a href="">{{Alias of he/she/they who liked}}</a></td>
-                    <td>{{Name of he/she/they who liked}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+            <tr>
+              <th>Alias</th>
+              <th>Name</th>
+            </tr>
+            {% for %}
+            <tr>
+              <td><a href="" class="name_of_people_liked">{{Jovier}}</a></td>
+              <td>{{John Oliver Racks.......}}</td>
+            </tr>
+            {% endfor %}
         </table>
-    </div>
-</body>
+      </div>
+    
+  </body>
 </html>
