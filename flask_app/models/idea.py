@@ -1,15 +1,17 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import user
 
 class Idea:
     db_name = "bright_ideas"
 
-    def __init__(self,data):
-        self.id = data['id']
-        self.post = data['post']
+    def __init__(self,db_data):
+        self.id = db_data['id']
+        self.post = db_data['post']
         self.user_id = db_data['user_id']
-        self.created_at = data['created_at']
-        self.updated_at = data['updated_at']
+        self.created_at = db_data['created_at']
+        self.updated_at = db_data['updated_at']
+        self.user = []
 
 
 
@@ -18,11 +20,6 @@ class Idea:
     @classmethod
     def save(cls,data):
         query = "INSERT INTO ideas (post, user_id) VALUES (%(post)s,%(user_id)s);"
-        return connectToMySQL(cls.db_name).query_db(query, data)
-
-    @classmethod
-    def update(cls, data):
-        query = "UPDATE ideas SET name=%(name)s WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
@@ -50,6 +47,32 @@ class Idea:
         return all_ideas
 
 
+
+    @classmethod
+    def join(cls):
+        # query = "SELECT users.alias AS user, ideas.post AS brightidea FROM users LEFT JOIN ideas ON users.id = ideas.user_id;"
+        query = "SELECT * FROM ideas JOIN users ON ideas.user_id = users.id;"
+        results = connectToMySQL(cls.db_name).query_db(query)
+        if len(results) == 0:
+            return []
+        else:
+            join_ideas = []
+            for join_stuff in results:
+                join_instance = cls(join_stuff)
+                new_user_dictionary = {
+                            "id": join_stuff['users.id'],
+                            "name": join_stuff['name'],
+                            "alias": join_stuff['alias'],
+                            "email": join_stuff['email'],
+                            "password": join_stuff['password'],
+                            "created_at": join_stuff['users.created_at'],
+                            "updated_at": join_stuff['users.updated_at'],
+                }
+                user_instance = user.User(new_user_dictionary)
+                join_instance.user = user_instance
+                join_ideas.append(join_instance)
+            print(join_ideas)
+            return join_ideas
 
 
     @staticmethod

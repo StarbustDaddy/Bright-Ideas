@@ -9,22 +9,21 @@
   </head>
   <body>
     <div class="header">
-      <h2>{{USER NAME}}</h2>
       <div>
         <a href="/dashboard" class="button">My Dashboard</a>
         <a href="/logout" class="button logout-button">Logout</a>
       </div>
     </div>
     <div class="title">
-      <span class="title-content">{{NAME}}</span>
-      <span class="title-content title-second"> Alias: {{ALIAS NAME}}</span>
-      <span class="title-content title-third"> Email: {{Email Info}}</span>
+      <span class="title-content">Name: {{user.name}}</span>
+      <span class="title-content title-second"> Alias: {{user.alias}}</span>
+      <span class="title-content title-third"> Email: {{user.email}}</span>
       <hr />
       <span class="title-content title-fourth"
-        >Total number of posts: {{Number of ideas}}</span
+        >Total number of posts: Number of ideas</span
       >
       <span class="title-content title-fifth"
-        >Total number of Likes: {{Number of likes}}</span
+        >Total number of Likes: Number of likes</span
       >
     </div>
   </body>

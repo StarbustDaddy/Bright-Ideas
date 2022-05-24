@@ -9,27 +9,27 @@
   </head>
   <body>
     <div class="header">
-      <h2>Welcome {{USERNAME}}!</h2>
+      <h2>Welcome {{user.alias}}!</h2>
       <a href="/logout" class="button">Logout</a>
     </div>
     <div class="container">
-      <form action="" method="POST">
+      <form action="/idea/create" method="POST">
         <input
           type="textarea"
-          name="idea_name"
+          name="post"
           placeholder="Post something witty here."
           id="idea_name"
         />
-        <a href="/post" class="post_button"><span>Post idea!</span></a>
+        <input type="submit" value="Submit" >
       </form>
     </div>
     <div>
-      {% for %}
+      {% for join in join %}
       <div class="idea_box">
-        <a href="">{{Alias}}</a> says:
-        <p>Test text messaging to see if this works.</p>
+        <a href="/users/{{user.id}}">{{join.user.name}}</a> says:
+        <p>{{join.post}}</p>
         <div>
-          <a href="/">Like</a><a href="/">{{Number of people who liked}}</a>
+          <a href="/idea/{{join.id}}">Like</a><a href="/">Number of people who liked</a>
         </div>
       </div>
       {% endfor %}
