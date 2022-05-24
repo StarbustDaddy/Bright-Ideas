@@ -12,8 +12,8 @@ def dashboard():
     }
 
     user = User.get_by_id(data)
-    idea = idea.get_all()
-    return render_template("dashboard.html", user=user, idea=idea)
+    ideas = Idea.get_all()
+    return render_template("dashboard.html", user=user, idea=ideas)
 
 
 #route to show add
