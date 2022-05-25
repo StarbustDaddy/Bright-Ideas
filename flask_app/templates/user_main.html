@@ -20,20 +20,20 @@
           placeholder="Post something witty here."
           id="idea_name"
         />
-        <input type="submit" value="Submit" >
+        <input type="submit" value="Submit" class="button button-post">
       </form>
     </div>
+    <hr>
     <div>
       {% for join in join %}
       <div class="idea_box">
-        <a href="/user/{{join.user.id}}">{{join.user.name}}</a> says:
+        <a href="/user/{{join.user.id}}" class="hello_user">{{join.user.name}}</a> says:
         <p>{{join.post}}</p>
         <div>
           <form action="/idea/like" method="POST">
             <input type="hidden" name="idea_id" value="{{idea.id}}">
-            <a href="/idea/like"><input type="submit" value="Like"></a><a href="/idea/{{join.id}}">people</a>
+            <a href="/idea/like"><input type="submit" value="Like" class="button button-post"></a><a href="/idea/{{join.id}}" class="hello_user">people</a>
           </form>
-          
         </div>
       </div>
       {% endfor %}
