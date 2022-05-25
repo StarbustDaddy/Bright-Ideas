@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template, session, redirect, flash, request
 from flask_bcrypt import Bcrypt
-from flask_app.models.user import User     #Again, not sure what's going on with this error
+from flask_app.models.user import User
 from flask_app.models.idea import Idea
 bcrypt= Bcrypt(app)
 
