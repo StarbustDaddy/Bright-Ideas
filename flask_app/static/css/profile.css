@@ -26,8 +26,7 @@ h2 {
   color: #3c67e3;
   font-size: 30px;
 }
-/* ===================================================== */
-/* a LINK BUTTON CSS */
+
 .button {
   display: inline-block;
   color: #fff;
@@ -50,8 +49,7 @@ h2 {
 .logout-button {
   border: 3px solid hsl(0, 74%, 40%);
 }
-/* ===================================================== */
-/* TITLE CLASS INFO ABOUT USER */
+
 .title {
   color: #fff;
   text-transform: uppercase;
