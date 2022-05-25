@@ -15,7 +15,7 @@
 
     
       <div class="chosen_user_says">
-        <p><a href="">{{join.user.name}}</a> says:</p>
+        <p><a href="">{{user.alias}}</a> says:</p>
         <!-- For whatever reason this join.user.name jinja thing doesn't work, when the same function works perfectly on user_main -->
         <div class="title">
           <span class="title-content">
@@ -31,12 +31,12 @@
               <th>Alias</th>
               <th>Name</th>
             </tr>
-            % for %
+            {% for j in join %}
             <tr>
-              <td><a href="" class="name_of_people_liked">Jovier</a></td>
-              <td>John Oliver Racks.......</td>
+              <td><a href="" class="name_of_people_liked">{{j.user.alias}}</a></td>
+              <td>{{j.user.name}}</td>
             </tr>
-            % endfor %
+            {% endfor %}
         </table>
       </div>
     

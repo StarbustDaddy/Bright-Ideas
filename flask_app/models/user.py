@@ -22,13 +22,13 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO users (name,alias,email,password) VALUES(%(name)s,%(alias)s,%(email)s,%(password)s)"
+        query = "INSERT INTO user (name,alias,email,password) VALUES(%(name)s,%(alias)s,%(email)s,%(password)s)"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
 
     @classmethod
     def get_by_email(cls,data):
-        query = "SELECT * FROM users WHERE email = %(email)s;"
+        query = "SELECT * FROM user WHERE email = %(email)s;"
         results = connectToMySQL(cls.db_name).query_db(query,data)
         if len(results) < 1:
             return False
@@ -37,7 +37,7 @@ class User:
 
     @classmethod
     def get_by_id(cls,data):
-        query = "SELECT * FROM users WHERE id = %(id)s;"
+        query = "SELECT * FROM user WHERE id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query,data)
         if len(results) < 1:
             return False
@@ -47,11 +47,8 @@ class User:
     @staticmethod
     def validate_register(user):
         is_valid = True
-        query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL(User.db_name).query_db(query,user)
-        if len(results) >= 1:
-            flash("Email already taken.","register")
-            is_valid=False
+        query = "SELECT * FROM user WHERE email = %(email)s;"
+        results = connectToMySQL(User.db_name).query_db(query, user)
         if not EMAIL_REGEX.match(user['email']):
             flash("Invalid Email","register")
             is_valid=False

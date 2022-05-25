@@ -1,3 +1,4 @@
+from subprocess import CREATE_NEW_CONSOLE
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app.models import user
@@ -11,7 +12,8 @@ class Idea:
         self.user_id = db_data['user_id']
         self.created_at = db_data['created_at']
         self.updated_at = db_data['updated_at']
-        self.user = []
+        self.users = []
+        self.likes = []
 
 
 
@@ -38,9 +40,9 @@ class Idea:
         return cls( results[0] )
 
     @classmethod
-    def get_all(cls):
+    def get_all(cls, data):
         query = "SELECT * FROM ideas;"
-        results = connectToMySQL(cls.db_name).query_db(query)
+        results = connectToMySQL(cls.db_name).query_db(query, data)
         all_ideas = []
         for row in results:
             all_ideas.append( cls(row) )
@@ -69,7 +71,7 @@ class Idea:
                             "updated_at": join_stuff['users.updated_at'],
                 }
                 user_instance = user.User(new_user_dictionary)
-                join_instance.user = user_instance
+                join_instance.users = user_instance
                 join_ideas.append(join_instance)
             print(join_ideas)
             return join_ideas

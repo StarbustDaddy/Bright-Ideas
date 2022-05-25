@@ -12,7 +12,7 @@ def dashboard():
     }
 
     user = User.get_by_id(data)
-    ideas = Idea.get_all()
+    ideas = Idea.get_all(data)
     joins = Idea.join()
     return render_template("user_main.html", user=user, idea=ideas, join = joins)
 
