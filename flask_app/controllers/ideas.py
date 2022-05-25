@@ -1,6 +1,6 @@
 from flask_app.models.user import User
 from flask_app.models.idea import Idea
-from flask_app.models.like import Like
+from flask_app.models.like import Likes
 from flask import request, render_template, redirect, session, flash
 from flask_app import app
 
@@ -57,7 +57,7 @@ def user_posts(id):
     user_data = {
         "id":session['user_id']
     }
-    return render_template("profile.html", idea=Idea.get_one(data), user=User.get_by_id(data))
+    return render_template("profile.html", idea=User.get_all_ideas_with_user(data), like=User.get_all_likes_with_user(data), user=User.get_by_id(data))
 
 
 # Delete
@@ -72,11 +72,11 @@ def delete_idea(id):
     return redirect("/dashboard")
 
 #Like Idea and increase function.
-@app.route("/idea/like")
+@app.route("/idea/like", methods=['POST'])
 def like_idea():
     data = {
-        "id": int(request.form["idea_id"]),
+        "id": (request.form["idea_id"]),
         "user_id": session["user_id"]
     }
-    Like.like_idea(data)
+    Likes.like_idea(data)
     return redirect("/dashboard")

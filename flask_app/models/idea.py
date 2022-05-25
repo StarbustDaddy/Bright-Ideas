@@ -14,7 +14,8 @@ class Idea:
         self.updated_at = db_data['updated_at']
         self.user = user.User.get_by_id({"id": db_data['user_id']})
         self.users = []
-        self.likes = []
+        
+
 
     @classmethod
     def save(cls,data):
@@ -44,8 +45,6 @@ class Idea:
         for row in results:
             all_ideas.append( cls(row) )
         return all_ideas
-
-
 
     @classmethod
     def join(cls, data):
