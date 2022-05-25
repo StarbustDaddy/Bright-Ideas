@@ -33,7 +33,7 @@
             </tr>
             {% for j in join %}
             <tr>
-              <td><a href="" class="name_of_people_liked">{{j.user.alias}}</a></td>
+              <td><a href="/user/{{j.user.id}}" class="name_of_people_liked">{{j.user.alias}}</a></td>
               <td>{{j.user.name}}</td>
             </tr>
             {% endfor %}

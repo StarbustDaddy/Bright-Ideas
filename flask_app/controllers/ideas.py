@@ -42,11 +42,11 @@ def show_idea(id):
     user_data = {
         "id":session['user_id']
     }
-    joins = Idea.join()
-    return render_template("idea_list.html",idea=Idea.get_one(data),user=User.get_by_id(user_data), join = joins)
+    joins = Idea.join(data)
+    return render_template("idea_list.html", idea=Idea.get_one(data), user=User.get_by_id(user_data), join=joins)
 
 
-@app.route('/users/<int:id>')
+@app.route('/user/<int:id>')
 def user_posts(id):
     if 'user_id' not in session:
         return redirect('/logout')
@@ -70,7 +70,7 @@ def delete_idea(id):
     Idea.delete(data)
     return redirect("/dashboard")
 
-#Like Idea
+#Like Idea and increase function.
 @app.route("/idea/like")
 def like_idea():
     data = {

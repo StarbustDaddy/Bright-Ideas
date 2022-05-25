@@ -16,10 +16,6 @@ class Idea:
         self.users = []
         self.likes = []
 
-
-
-
-
     @classmethod
     def save(cls,data):
         query = "INSERT INTO idea (post, user_id) VALUES (%(post)s,%(user_id)s);"
@@ -38,7 +34,7 @@ class Idea:
     def get_one(cls,data):
         query = "SELECT * FROM idea WHERE id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query,data)
-        return cls( results[0] )
+        return cls(results[0] )
 
     @classmethod
     def get_all(cls, data):
@@ -54,7 +50,7 @@ class Idea:
     @classmethod
     def join(cls, data):
         # query = "SELECT users.alias AS user, ideas.post AS brightidea FROM users LEFT JOIN ideas ON users.id = ideas.user_id;"
-        query = "SELECT * FROM idea JOIN user ON idea.user_id = user.id;"
+        query = "SELECT * FROM idea LEFT JOIN user ON idea.user_id = user.id;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
         if len(results) == 0:
             return []
@@ -63,13 +59,13 @@ class Idea:
             for join_stuff in results:
                 join_instance = cls(join_stuff)
                 new_user_dictionary = {
-                            "id": join_stuff['users.id'],
+                            "id": join_stuff['user.id'],
                             "name": join_stuff['name'],
                             "alias": join_stuff['alias'],
                             "email": join_stuff['email'],
                             "password": join_stuff['password'],
-                            "created_at": join_stuff['users.created_at'],
-                            "updated_at": join_stuff['users.updated_at'],
+                            "created_at": join_stuff['user.created_at'],
+                            "updated_at": join_stuff['user.updated_at'],
                 }
                 user_instance = user.User(new_user_dictionary)
                 join_instance.users = user_instance
