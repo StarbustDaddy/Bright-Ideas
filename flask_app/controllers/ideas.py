@@ -1,5 +1,6 @@
 from flask_app.models.user import User
 from flask_app.models.idea import Idea
+from flask_app.models.like import Like
 from flask import request, render_template, redirect, session, flash
 from flask_app import app
 
@@ -12,9 +13,9 @@ def dashboard():
     }
 
     user = User.get_by_id(data)
-    ideas = Idea.get_all(data)
-    joins = Idea.join()
-    return render_template("user_main.html", user=user, idea=ideas, join = joins)
+    
+    joins = Idea.join(data)
+    return render_template("user_main.html", user=user, join = joins)
 
 
 # Create
@@ -69,4 +70,14 @@ def delete_idea(id):
         "id":id
     }
     Idea.delete(data)
+    return redirect("/dashboard")
+
+#Like Idea
+@app.route("/idea/like")
+def like_idea():
+    data = {
+        "id": int(request.form["idea_id"]),
+        "user_id": session["user_id"]
+    }
+    Like.like_idea(data)
     return redirect("/dashboard")

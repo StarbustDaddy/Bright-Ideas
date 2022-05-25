@@ -9,3 +9,9 @@ class Like:
         self.liked = data['liked']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+    @classmethod
+    def like_idea(cls, data):
+        query = "INSERT INTO like (user_id, idea_id) VALUES (%(id)s, %(user_id)s);"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+        

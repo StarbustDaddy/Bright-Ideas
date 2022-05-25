@@ -12,6 +12,7 @@ class Idea:
         self.user_id = db_data['user_id']
         self.created_at = db_data['created_at']
         self.updated_at = db_data['updated_at']
+        self.user = user.User.get_by_id({"id": db_data['user_id']})
         self.users = []
         self.likes = []
 
@@ -51,10 +52,10 @@ class Idea:
 
 
     @classmethod
-    def join(cls):
+    def join(cls, data):
         # query = "SELECT users.alias AS user, ideas.post AS brightidea FROM users LEFT JOIN ideas ON users.id = ideas.user_id;"
         query = "SELECT * FROM ideas JOIN users ON ideas.user_id = users.id;"
-        results = connectToMySQL(cls.db_name).query_db(query)
+        results = connectToMySQL(cls.db_name).query_db(query, data)
         if len(results) == 0:
             return []
         else:
