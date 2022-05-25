@@ -34,8 +34,7 @@ a {
   color: white;
   font-size: 22px;
 }
-/* ===================================================== */
-/* TITLE CLASS INFO */
+
 .title {
   color: #fff;
   /* line-height: 0px; */
@@ -63,8 +62,6 @@ a {
     transform: none;
   }
 }
-/* ===================================================== */
-/* PEOPLE LIKED SECTION */
 
 h2 {
   color: hsl(0, 74%, 40%);
@@ -96,8 +93,7 @@ th {
   text-align: left;
   padding: 15px;
 }
-/* ===================================================== */
-/* a LINK BUTTON CSS */
+
 .button {
   display: inline-block;
   color: #fff;
