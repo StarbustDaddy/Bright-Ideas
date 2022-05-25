@@ -22,12 +22,12 @@ class Idea:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO ideas (post, user_id) VALUES (%(post)s,%(user_id)s);"
+        query = "INSERT INTO idea (post, user_id) VALUES (%(post)s,%(user_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
     def delete(cls,data):
-        query = "DELETE FROM ideas WHERE id = %(id)s;"
+        query = "DELETE FROM idea WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
 
@@ -36,13 +36,13 @@ class Idea:
 
     @classmethod
     def get_one(cls,data):
-        query = "SELECT * FROM ideas WHERE id = %(id)s;"
+        query = "SELECT * FROM idea WHERE id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query,data)
         return cls( results[0] )
 
     @classmethod
     def get_all(cls, data):
-        query = "SELECT * FROM ideas;"
+        query = "SELECT * FROM idea;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
         all_ideas = []
         for row in results:
@@ -54,7 +54,7 @@ class Idea:
     @classmethod
     def join(cls, data):
         # query = "SELECT users.alias AS user, ideas.post AS brightidea FROM users LEFT JOIN ideas ON users.id = ideas.user_id;"
-        query = "SELECT * FROM ideas JOIN users ON ideas.user_id = users.id;"
+        query = "SELECT * FROM idea JOIN user ON idea.user_id = user.id;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
         if len(results) == 0:
             return []

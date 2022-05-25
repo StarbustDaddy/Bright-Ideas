@@ -13,10 +13,8 @@ def dashboard():
     }
 
     user = User.get_by_id(data)
-    
-    joins = Idea.join(data)
-    return render_template("user_main.html", user=user, join = joins)
-
+    ideas = Idea.get_all(data)
+    return render_template("user_main.html", user=user, idea = ideas)
 
 # Create
 @app.route('/idea/create',methods=['POST'])
