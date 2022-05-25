@@ -50,9 +50,6 @@ h2 {
   margin-bottom: -5px;
 }
 
-/* ==================================================== */
-/* SUBMIT BUTTONS */
-
 .submit_button {
   display: inline-block;
   text-decoration: none;
@@ -89,6 +86,3 @@ h2 {
 .submit_button:hover::before {
   transform: scaleX(1) skewX(35deg);
 }
-
-/* I DIDNT SEE ANYTHING ABOUT FLASH MESSAGES SO PLEASE UPDATE THOSE
-SO I CAN DO A CSS FOR IT */
