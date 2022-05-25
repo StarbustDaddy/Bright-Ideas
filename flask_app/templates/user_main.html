@@ -26,14 +26,14 @@
     <div>
       {% for i in idea %}
       <div class="idea_box">
-        <a href="/users/{{user.id}}">{{join.user.name}}</a> says:
+        <a href="/users/{{user.id}}">{{user.name}}</a> says:
         <p>{{i.post}}</p>
         <div>
           <form action="/idea/like" method="POST">
             <input type="hidden" name="idea_id" value="{{idea.id}}">
-            <input type="submit" value="Like">
+            <a href="/idea/like"><input type="submit" value="Like"></a><a href="/idea/{{user.id}}">people</a>
           </form>
-          <a href="/idea/like">Like</a><a href="/idea/{{join.id}}">people</a>
+          
         </div>
       </div>
       {% endfor %}
