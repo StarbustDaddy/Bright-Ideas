@@ -24,14 +24,14 @@
       </form>
     </div>
     <div>
-      {% for i in idea %}
+      {% for join in join %}
       <div class="idea_box">
-        <a href="/user/{{user.id}}">{{user.name}}</a> says:
-        <p>{{i.post}}</p>
+        <a href="/user/{{join.user.id}}">{{join.user.name}}</a> says:
+        <p>{{join.post}}</p>
         <div>
           <form action="/idea/like" method="POST">
             <input type="hidden" name="idea_id" value="{{idea.id}}">
-            <a href="/idea/like"><input type="submit" value="Like"></a><a href="/idea/{{idea.id}}">people</a>
+            <a href="/idea/like"><input type="submit" value="Like"></a><a href="/idea/{{join.id}}">people</a>
           </form>
           
         </div>

@@ -14,7 +14,8 @@ def dashboard():
 
     user = User.get_by_id(data)
     ideas = Idea.get_all(data)
-    return render_template("user_main.html", user=user, idea = ideas)
+    joins = Idea.join(data)
+    return render_template("user_main.html", user=user, idea = ideas, join=joins)
 
 # Create
 @app.route('/idea/create',methods=['POST'])
@@ -56,7 +57,7 @@ def user_posts(id):
     user_data = {
         "id":session['user_id']
     }
-    return render_template("profile.html", idea=Idea.get_one(data), user=User.get_by_id(user_data))
+    return render_template("profile.html", idea=Idea.get_one(data), user=User.get_by_id(data))
 
 
 # Delete
