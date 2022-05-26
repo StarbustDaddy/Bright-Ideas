@@ -90,7 +90,7 @@ class User:
             flash("Last name must be at least 2 characters","register")
             is_valid= False
         if len(user['password']) < 8:
-            flash("Password must be at least 8 characters","register")
+            flash("Password must be at least 8 characters", "register")
             is_valid= False
         if user['password'] != user['c_password']:
             flash("Passwords don't match","register")

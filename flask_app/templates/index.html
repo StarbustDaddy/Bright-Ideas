@@ -14,7 +14,6 @@
         <!-- FIRST FORM -->
         <form action="/register" method="POST">
           <h3>Register</h3>
-          {% with messages = get_flashed_messages(category_filter=['register']) %}
                 {% if messages %}
                 <div class="alert alert-danger" role="alert">
                         {% for message in messages %}
@@ -22,7 +21,6 @@
                         {% endfor %}
                 </div>
                 {% endif %}
-            {% endwith %}
           <div>
             <label for="Name">Name</label>
             <input type="text" name="name" id="name" />
@@ -49,7 +47,6 @@
 
         <form action="/login" method="POST">
           <h3>Login</h3>
-          {% with messages = get_flashed_messages(category_filter=['register']) %}
                 {% if messages %}
                 <div class="alert alert-danger" role="alert">
                         {% for message in messages %}
@@ -57,7 +54,6 @@
                         {% endfor %}
                 </div>
                 {% endif %}
-            {% endwith %}
           <div>
             <label for="email">Email</label>
             <input type="text" name="email" />

@@ -27,9 +27,12 @@ class Idea:
         query = "DELETE FROM idea WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
-
-
-
+    @classmethod
+    def edit(cls, data):
+        query = "UPDATE idea SET post = %(post)s WHERE id = %(id)s"
+        results =  connectToMySQL(cls.db_name).query_db(query, data)
+        print(results)
+        return results
 
     @classmethod
     def get_one(cls,data):

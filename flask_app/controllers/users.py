@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, session, redirect, flash, request
+from flask import get_flashed_messages, render_template, session, redirect, flash, request
 from flask_bcrypt import Bcrypt
 from flask_app.models.user import User
 from flask_app.models.idea import Idea
@@ -7,7 +7,7 @@ bcrypt= Bcrypt(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', messages = get_flashed_messages())
 
 @app.route('/register',methods=['POST'])
 def register():

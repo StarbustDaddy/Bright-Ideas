@@ -31,9 +31,13 @@
         <p>{{join.post}}</p>
         <div>
           <form action="/idea/like" method="POST">
-            <input type="hidden" name="idea_id" value="{{idea.id}}">
+            <input type="hidden" name="idea_id" value="{{join.id}}">
             <a href="/idea/like"><input type="submit" onclick="liked('num')" value="Like" class="button button-post"></a><a href="/idea/{{join.id}}" class="hello_user"><span id="num">{{like.likes|length}}</span> people like this</a>
           </form>
+          {% if join.user.id == session['user_id'] %}
+          <a href="/idea/{{join.id}}/delete">Delete</a>
+          <a href="/idea/update/{{join.id}}">Edit</a>
+          {% endif %}
         </div>
       </div>
       {% endfor %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/idea_list.css') }}">
+    <title>Bright Ideas - Idea Update</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/dashboard" class="button">My Dashboard</a>
+        <a href="/logout" class="button logout-button">Logout</a>
+    </div>
+    <div class="chosen_user_says">
+        <div class="container">
+            <form action="/idea/edit/{{idea.id}}" method="POST">
+                <input type="textarea" name="post" placeholder="{{idea.post}}" id="idea_name"/>
+                <input type="submit" value="Submit" class="button button-post">
+            </form>
+        </div>
+    </div>
+    <div class="people_liked">
+        <h2>People who liked this post.</h2>
+        <table>
+            <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+            {% for j in join %}
+                <tr>
+                    <td><a href="/user/{{j.user.id}}" class="name_of_people_liked">{{j.user.alias}}</a></td>
+                    <td>{{j.user.name}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

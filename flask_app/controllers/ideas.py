@@ -15,7 +15,8 @@ def dashboard():
     user = User.get_by_id(data)
     ideas = Idea.get_all(data)
     joins = Idea.join(data)
-    return render_template("user_main.html", user=user, idea = ideas, join=joins, like=User.get_all_likes_with_user(data))
+    likes = User.get_all_likes_with_user(data) 
+    return render_template("user_main.html", user=user, idea = ideas, like = likes, join=joins)
 
 # Create
 @app.route('/idea/create',methods=['POST'])
@@ -59,6 +60,28 @@ def user_posts(id):
     }
     return render_template("profile.html", idea=User.get_all_ideas_with_user(data), like=User.get_all_likes_with_user(data), user=User.get_by_id(data))
 
+@app.route("/idea/update/<int:id>")
+def idea_update(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data = {
+        "id":id
+    }
+    user_data = {
+        "id":session['user_id']
+    }
+    joins = Idea.join(data)
+    return render_template("edit_idea.html", idea=Idea.get_one(data), user=User.get_by_id(data), join=joins)
+
+#Edit
+@app.route("/idea/edit/<int:id>", methods = ["POST"])
+def edit_idea(id):
+    Idea.get_one({"id": id})
+    change = {request.form['post']
+            }
+    Idea.edit(change)
+    return redirect("/idea/<int:id>")
+
 
 # Delete
 @app.route("/idea/<int:id>/delete")
@@ -71,11 +94,11 @@ def delete_idea(id):
     Idea.delete(data)
     return redirect("/dashboard")
 
-#Like Idea and increase function.
+#Like Idea
 @app.route("/idea/like", methods=['POST'])
 def like_idea():
     data = {
-        "id": (request.form["idea_id"]),
+        "id": request.form["idea_id"],
         "user_id": session["user_id"]
     }
     Likes.like_idea(data)
