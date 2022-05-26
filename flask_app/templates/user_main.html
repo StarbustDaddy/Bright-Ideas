@@ -35,8 +35,8 @@
             <a href="/idea/like"><input type="submit" onclick="liked('num')" value="Like" class="button button-post"></a><a href="/idea/{{join.id}}" class="hello_user"><span id="num">{{like.likes|length}}</span> people like this</a>
           </form>
           {% if join.user.id == session['user_id'] %}
-          <a href="/idea/{{join.id}}/delete">Delete</a>
-          <a href="/idea/update/{{join.id}}">Edit</a>
+          <a href="/idea/{{join.id}}/delete"><button>Delete</button></a>
+          <a href="/idea/update/{{join.id}}"><button>Edit</button></a>
           {% endif %}
         </div>
       </div>
