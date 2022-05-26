@@ -15,7 +15,7 @@ def dashboard():
     user = User.get_by_id(data)
     ideas = Idea.get_all(data)
     joins = Idea.join(data)
-    return render_template("user_main.html", user=user, idea = ideas, join=joins)
+    return render_template("user_main.html", user=user, idea = ideas, join=joins, like=User.get_all_likes_with_user(data))
 
 # Create
 @app.route('/idea/create',methods=['POST'])
@@ -44,7 +44,7 @@ def show_idea(id):
         "id":session['user_id']
     }
     joins = Idea.join(data)
-    return render_template("idea_list.html", idea=Idea.get_one(data), user=User.get_by_id(user_data), join=joins)
+    return render_template("idea_list.html", idea=Idea.get_one(data), user=User.get_by_id(data), join=joins)
 
 
 @app.route('/user/<int:id>')

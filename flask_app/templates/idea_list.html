@@ -15,8 +15,7 @@
 
     
       <div class="chosen_user_says">
-        <p><a href="">{{user.alias}}</a> says:</p>
-        <!-- For whatever reason this join.user.name jinja thing doesn't work, when the same function works perfectly on user_main -->
+        <p><a href="/user/{{user.id}}">{{user.alias}}</a> says:</p>
         <div class="title">
           <span class="title-content">
             {{idea.post}}
